@@ -82,6 +82,8 @@ docker inspect redis
 docker inspect --format='{{.NetworkSettings.IPAddress}}' redis
 
 
+# docker run Run a command in a new container
+# docker start Start one or more stopped containers
 ```
 
 ## Docker lifecycle
