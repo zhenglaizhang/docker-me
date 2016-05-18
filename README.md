@@ -259,6 +259,23 @@ So what I do right now is to pause before commit:
 As far as I can tell I have no problems right now. But this is a developing machine so no I have no experience on heavy load servers.
 
 
+## Docker machine
+
+```bash
+docker-machine create -d virtualbox --virtualbox-memory 4096 default
+
+
+docker-machine stop
+VBoxManage modifyvm default --cpus 2
+VBoxManage modifyvm default --memory 4096
+docker-machine start
+```
+
+Docker Machine maintainer here. I don't think adjusting the config.json manually will work.
+
+Your two options are to either create the machine with --virtualbox-memory set, or to adjust the VM's memory in the VirtualBox GUI ("Preferences > Memory" for that VM I think). Make sure the machine is powered off and there should be a little slider that works.
+
+That's true, in order to have docker-machine inspect report the accurate amount, you do have to edit config.json (that's where inspect gets its information)
 
 ## Scheduling and supervision
 
