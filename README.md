@@ -246,6 +246,20 @@ We can easily setup the private docker private registry, it supports multiple st
 
 It works great for CD pipleline.
 
+## Commit running container
+
+https://github.com/dqminh/docker-flatten
+
+I am in a similar situation. I am thinking about not using a dedicated data volume container instead committing regularly to have some kind of incremental backup. Beside the incremental backup the big benefit is for a team developing approach. As newcomer you can simply docker pull a database image already containing all the data you need to run, debug and develop.
+
+So what I do right now is to pause before commit:
+	
+	docker pause happy_feynman; docker commit happy_feynman odev:`date +%s`
+
+As far as I can tell I have no problems right now. But this is a developing machine so no I have no experience on heavy load servers.
+
+
+
 ## Scheduling and supervision
 
 ## Monitoring and logging
