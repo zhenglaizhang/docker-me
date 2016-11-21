@@ -7,6 +7,10 @@
 ### Linux
 
 
+```bash
+docker run debian echo "hello world"
+```
+
 ### Mac
 
 ```bash
