@@ -68,11 +68,8 @@ docker port
 ### Mac
 
 ```bash
-brew cask install dockertoolbox
+brew cask install docker
 ```
-
-Run `Docker Quickstart Terminal`
-
 
 
 ### Commands
