@@ -8,7 +8,10 @@
 
 
 ```bash
-docker run debian echo "hello world"
+docker run ubuntu echo "hello world"
+
+mkdir backup
+docker run --rm --volumes-from myredis -v $(pwd)/backup:/backup ubuntu cp /data/dump.rdb /backup/
 ```
 
 ### Mac
