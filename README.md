@@ -29,9 +29,40 @@ docker attach $ID
 
 
 ID=$(docker run -d ubuntu bash -c "trap 'echo caught' SIGTRAP; while true; do echo 'tick'; sleep 1; done;")
-docker kill -s SIGTRAP $ID
+docker kill -s SIGTRAP $ID # sends a signal to the main process (PID 1) in a container
 docker logs $ID
-docker kill $ID
+docker kill $ID # by default, sends SIGKILL
+
+
+
+
+
+# rm all stopped containers
+docker rm $(docker ps -aq)
+```
+
+### Docker Info
+
+```bash
+docker info
+docker version
+docker help
+```
+
+
+### Container Info
+
+```bash
+ID = $(docker run -d ubuntu touch /test)
+docker diff $ID # changes between the containers filesystem with original image
+
+docker events # real-time events from docker daemon, ctrl+c to quit
+
+docker inspect -f {go-template}
+
+docker logs
+
+docker port
 ```
 
 ### Mac
