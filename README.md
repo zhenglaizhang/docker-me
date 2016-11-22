@@ -14,6 +14,26 @@ mkdir backup
 docker run --rm --volumes-from myredis -v $(pwd)/backup:/backup ubuntu cp /data/dump.rdb /backup/
 ```
 
+
+### Command Collections
+
+```bash
+ID=$(docker run -d ubuntu sh -c "while true; do echo 'tick'; sleep 1; done;")
+docker exec -it $ID /bin/bash
+docker exec $ID echo hello
+docker exec $ID uname -a
+docker attach $ID
+# Ctrl + C to kill the main process in container
+
+
+
+
+ID=$(docker run -d ubuntu bash -c "trap 'echo caught' SIGTRAP; while true; do echo 'tick'; sleep 1; done;")
+docker kill -s SIGTRAP $ID
+docker logs $ID
+docker kill $ID
+```
+
 ### Mac
 
 ```bash
