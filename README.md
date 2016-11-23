@@ -62,7 +62,26 @@ docker inspect -f {go-template}
 
 docker logs
 
+
+ID=$(docker run -P -d redis)
+# docker port CONTAINER [PRIVATE_PORT[/PROTO]]
+# often used after docker run -P <image> to discover the assigned ports
+docker port $ID
+docker port $ID 6379
+docker port $ID 6379/tcp
 docker port
+
+
+
+docker ps
+docker ps -a
+docker ps -q
+docker ps -aq
+
+
+# run the ps on the host and filters for the processes in the container
+docker top myredis
+# TODO
 ```
 
 ### Mac
